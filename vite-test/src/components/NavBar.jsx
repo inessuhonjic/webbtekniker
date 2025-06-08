@@ -1,4 +1,4 @@
-
+import BellPopover from './Popover'
 
 function NavBar () {
     return (
@@ -14,6 +14,7 @@ function NavBar () {
     <div className="collapse navbar-collapse" id="navbarNavDropdown">
       <ul className="navbar-nav">
         
+        <BellPopover />
       </ul>
     </div>
   </div>
