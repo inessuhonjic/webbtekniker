@@ -9,8 +9,6 @@ function App() {
     
     <div className="root">
     
-      <h1>Hej!</h1>
-    
     </div>
     
   )
