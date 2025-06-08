@@ -67,10 +67,12 @@ function Card() {
   };
 
 
-  return (
+return (
   <div className="cardwrapper">
     <div className="container col-xxl-8 px-4 py-5">
       <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
+
+        {/* Bild */}
         <div className="col-10 col-sm-8 col-lg-6">
           <motion.img
             initial={{ scale: 0.5 }}
@@ -83,51 +85,46 @@ function Card() {
             loading="lazy"
           />
         </div>
+
+        {/* Knappen för show/hide */}
         <div className="col-lg-6">
-          <div className="d-grid gap-2 d-md-flex justify-content-md-start">
-            <div style={container}>
-              <motion.button
-              className="btn btn-primary"
-                onClick={() => setIsVisible(!isVisible)}
-                whileTap={{ scale: 0.95 }}
-              >
-                {isVisible ? "Hide fact" : "Show fact"}
-              </motion.button>
+          <motion.button
+            className="btn btn-primary mb-3"
+            onClick={() => setIsVisible(!isVisible)}
+            whileTap={{ scale: 0.95 }}
+          >
+            {isVisible ? "Hide fact" : "Show fact"}
+          </motion.button>
 
-              <AnimatePresence>
-                {isVisible && (
-                  <motion.div
-                    key="factBox"
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 20 }}
-                    style={{ marginTop: "10px" }}
-                  >
-                    <div className="m-5">
-                    <p className="p-5 m-5">{facts.text}</p>
-                    </div>
-                    <button
-                      style={button}
-                      onClick={updateFact}
-                      className="btn btn-outline-secondary btn-sm"
-                    >
-                      Get new fact
-                    </button>
-                    <button
-                type="button"
-                className="btn btn-outline-secondary btn-lg px-4"
-                onClick={updateTodaysFact}
-                style={{ marginTop: "10px" }}
+          {/* Faktarutan - kan placeras här, eller ännu en nivå djupare */}
+          <AnimatePresence>
+            {isVisible && (
+              <motion.div
+                key="factBox"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
               >
-                Todays special fact
-              </button>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                <p className="p-3 border rounded bold bg-white">
+                  {facts.text}
+                </p>
 
-              
-            </div>
-          </div>
+                <button
+                  onClick={updateFact}
+                  className="btn btn-outline-secondary btn-sm me-2 mt-2"
+                >
+                  Get new fact
+                </button>
+
+                <button
+                  className="btn btn-outline-secondary btn-sm mt-2"
+                  onClick={updateTodaysFact}
+                >
+                  Todays special fact
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </div>
