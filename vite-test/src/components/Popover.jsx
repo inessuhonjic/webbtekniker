@@ -4,7 +4,7 @@ import '../Styles.css';
 
 
 
-export default function BellPopover() {
+export default function BellPopover({ name }) {
   return (
     <Popover.Root>
       <Popover.Trigger className="IconButton">
@@ -18,7 +18,7 @@ export default function BellPopover() {
             </Popover.Arrow>
             <Popover.Title className="Title">Nämen!</Popover.Title>
             <Popover.Description className="Description">
-              Kul att just DU klickade här.
+              Kul att just {name} klickade här.
             </Popover.Description>
           </Popover.Popup>
         </Popover.Positioner>

@@ -6,7 +6,9 @@ import { AnimatePresence, motion } from "motion/react"
 
 function Card() {
   const [facts, setFacts] = useState("");
-  const [isVisible, setIsVisible] = useState(true)
+  const [isVisible, setIsVisible] = useState(false)
+
+  const [bgColor, setBgColor] = useState("white");
 
   useEffect(() => {
     getFact()
@@ -25,6 +27,7 @@ function Card() {
       .then((data) => {
         console.log(data)
         setFacts(data); // Spara allafakta
+        setBgColor("white");
 
       });
   }
@@ -36,9 +39,14 @@ function Card() {
       .then((data) => {
         console.log(data)
         setFacts(data); // Spara allafakta
+        setBgColor("white");
 
       })
   }
+
+  
+
+  
 
   const container = {
     display: "flex",
@@ -74,9 +82,7 @@ return (
 
         {/* Bild */}
         <div className="col-10 col-sm-8 col-lg-6">
-          <motion.img
-            initial={{ scale: 0.5 }}
-            animate={{ scale: 1 }}
+          <img
             src="https://media.istockphoto.com/id/1484795521/sv/foto/two-interracial-best-friends-laughing-and-having-a-good-time-together-in-a-studio.jpg?s=2048x2048&w=is&k=20&c=vGDrOtSMD2yFzZyZ8FtsyZui2UO6kA2Z4r17ffZd17w="
             className="d-block mx-lg-auto img-fluid"
             alt="two girls laughing"
@@ -100,12 +106,13 @@ return (
           <AnimatePresence>
             {isVisible && (
               <motion.div
+              className ="bgFactBox"
                 key="factBox"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
               >
-                <p className="p-3 border rounded bold bg-white">
+                <p className="p-3 border rounded bold" style={{ backgroundColor: bgColor }}>
                   {facts.text}
                 </p>
 
@@ -121,6 +128,13 @@ return (
                   onClick={updateTodaysFact}
                 >
                   Todays special fact
+                </button>
+
+                 <button
+                  onClick={() => setBgColor("lightgreen")}
+                  className="btn btn-outline-secondary btn-sm me-2 mt-2"
+                >
+                  I like this!
                 </button>
               </motion.div>
             )}
