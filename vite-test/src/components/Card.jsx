@@ -8,7 +8,7 @@ function Card() {
   const [facts, setFacts] = useState("");
   const [isVisible, setIsVisible] = useState(false)
 
-  const [bgColor, setBgColor] = useState("white");
+  const [bgColor, setBgColor] = useState("bg-white");
 
   useEffect(() => {
     getFact()
@@ -27,7 +27,7 @@ function Card() {
       .then((data) => {
         console.log(data)
         setFacts(data); // Spara allafakta
-        setBgColor("white");
+        setBgColor("bg-white");
 
       });
   }
@@ -39,7 +39,7 @@ function Card() {
       .then((data) => {
         console.log(data)
         setFacts(data); // Spara allafakta
-        setBgColor("white");
+        setBgColor("bg-white");
 
       })
   }
@@ -112,7 +112,7 @@ return (
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
               >
-                <p className="p-3 border rounded bold" style={{ backgroundColor: bgColor }}>
+                <p className={`p-3 border rounded fw-bold ${bgColor}`}>
                   {facts.text}
                 </p>
 
@@ -131,7 +131,7 @@ return (
                 </button>
 
                  <button
-                  onClick={() => setBgColor("lightgreen")}
+                  onClick={() => setBgColor("bg-success")}
                   className="btn btn-outline-secondary btn-sm me-2 mt-2"
                 >
                   I like this!
