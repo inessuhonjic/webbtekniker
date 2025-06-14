@@ -1,10 +1,10 @@
 import React from 'react';
 import { Popover } from '@base-ui-components/react/popover';
-import '../styles.css'; 
+import '../Styles.css'; 
 
 
 
-export default function ExamplePopover() {
+export default function BellPopover({ name }) {
   return (
     <Popover.Root>
       <Popover.Trigger className="IconButton">
@@ -16,9 +16,9 @@ export default function ExamplePopover() {
             <Popover.Arrow className="Arrow">
               <ArrowSvg />
             </Popover.Arrow>
-            <Popover.Title className="Title">Notifications</Popover.Title>
+            <Popover.Title className="Title">Nämen!</Popover.Title>
             <Popover.Description className="Description">
-              You are all caught up. Good job!
+              Kul att just {name} klickade här.
             </Popover.Description>
           </Popover.Popup>
         </Popover.Positioner>
