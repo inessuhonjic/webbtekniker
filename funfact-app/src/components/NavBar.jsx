@@ -24,7 +24,7 @@ function NavBar ({ setName,name }) {
       <ul className="navbar-nav">
         
         <BellPopover name={name} />
-        <button onClick={(askForName)}>Berätta vem du är</button>
+        <button className="btn btn-primary" onClick={(askForName)}>Berätta vem du är</button>
       </ul>
     </div>
   </div>

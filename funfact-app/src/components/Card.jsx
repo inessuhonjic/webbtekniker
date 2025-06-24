@@ -131,10 +131,10 @@ return (
                 </button>
 
                  <button
-                  onClick={() => setBgColor("bg-success")}
+                  onClick={() => setBgColor((prevColor) => (prevColor === "bg-success" ? "bg-white" : "bg-success"))}
                   className="btn btn-outline-secondary btn-sm me-2 mt-2"
                 >
-                  I like this!
+                  {bgColor === "bg-success" ? "This is not funny!" : "This is funny!"}
                 </button>
               </motion.div>
             )}
