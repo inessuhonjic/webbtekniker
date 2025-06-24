@@ -22,10 +22,10 @@ function App() {
   return (
     
     <div className="root">
-    <NavBar setName = {setName}
-    name={name} />
+    <NavBar  />
     <Welcome name= {name} />
-    <Card />
+    <Card setName = {setName}
+    name={name}/>
     <Footer />
     </div>
     

@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "motion/react"
 
 
 
-function Card() {
+function Card({ setName,name }) {
   const [facts, setFacts] = useState("");
   const [isVisible, setIsVisible] = useState(false)
 
@@ -44,7 +44,15 @@ function Card() {
       })
   }
 
-  
+
+   const askForName = () => {
+        
+        const newName = prompt("Vad heter du?")
+        if (newName) {
+            sessionStorage.setItem("name", newName)
+            setName(newName)
+        }
+    }
 
   
 
@@ -78,7 +86,7 @@ function Card() {
 return (
   <div className="cardwrapper">
     <div className="container col-xxl-8 px-4 py-5">
-      <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
+      <div className="row flex-lg align-items-center justify-content-center mx-auto space-evenly g-5 py-5">
 
         {/* Bild */}
         <div className="col-10 col-sm-8 col-lg-6">
@@ -92,14 +100,17 @@ return (
           />
         </div>
 
+    
+
         {/* Knappen för show/hide */}
         <div className="col-lg-6">
+          <button className="btn btn-primary me-3 mb-3" onClick={(askForName)}>Tell us who you are</button>
           <motion.button
             className="btn btn-primary mb-3"
             onClick={() => setIsVisible(!isVisible)}
             whileTap={{ scale: 0.95 }}
           >
-            {isVisible ? "Hide fact" : "Show fact"}
+            {isVisible ? "Hide fact" : "Show funfact"}
           </motion.button>
 
           {/* Faktarutan - kan placeras här, eller ännu en nivå djupare */}
